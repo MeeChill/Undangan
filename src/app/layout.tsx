@@ -15,7 +15,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Adnan & Laila - Wedding Invitation",
+  title: "Maulana & Indah - Wedding Invitation",
   description: "Dengan penuh cinta dan bahagia, kami mengundang Anda untuk hadir di hari spesial kami.",
 };
 
