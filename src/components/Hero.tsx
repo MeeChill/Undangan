@@ -16,7 +16,7 @@ function HeroContent() {
       {/* Background Image with Dark Overlay */}
       <div className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
         <Image
-          src="/images/hero_moody_wedding.png"
+          src="/images/hero_moody_wedding.jpeg"
           alt="Couple Portrait"
           fill
           className="object-cover object-center opacity-80"

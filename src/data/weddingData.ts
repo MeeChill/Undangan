@@ -83,14 +83,14 @@ export const weddingData: WeddingData = {
       parentsContext: "Putra dari",
       fatherName: "Bapak Mat Soleh (Alm)",
       motherName: "Ibu Masanih",
-      image: "/images/groom_portrait.png"
+      image: "/images/groom_portrait.jpeg"
     },
     bride: {
       fullName: "Indah Maulinda",
       parentsContext: "Putri dari",
       fatherName: "Bapak Dimas Onteng (Alm)",
       motherName: "Ibu Hindun Asmiyati",
-      image: "/images/bride_portrait.png"
+      image: "/images/bride_portrait.jpeg"
     }
   },
   events: {
@@ -125,7 +125,6 @@ export const weddingData: WeddingData = {
   gallery: [
     "/images/gallery_hands.png",
     "/images/gallery_venue.png",
-    "/images/gallery_bride.png"
   ],
   footerMessage: "\"Terima kasih telah menjadi bagian dari cerita kami. Maulana & Indah.\"",
   rsvpWhatsApp: [
