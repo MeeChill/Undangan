@@ -2,12 +2,13 @@
 
 import { motion } from "framer-motion";
 import { weddingData } from "@/data/weddingData";
-import { MapPin } from "lucide-react";
+import { MapPin, Calendar, Clock } from "lucide-react";
 
 export function Details() {
   return (
-    <section className="py-24 md:py-32 px-6 flex justify-center bg-brand-navy">
-      <div className="max-w-6xl w-full grid md:grid-cols-2 gap-12 lg:gap-24">
+    <section className="py-32 md:py-48 px-6 flex justify-center bg-surface-lowest relative">
+      <div className="absolute inset-0 bg-noise opacity-30 pointer-events-none"></div>
+      <div className="max-w-6xl w-full flex flex-col gap-32">
         {[weddingData.events.akad, weddingData.events.resepsi].map((event, i) => (
           <motion.div
             key={event.title}
@@ -15,32 +16,47 @@ export function Details() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 1, delay: i * 0.2 }}
-            className="flex flex-col items-center text-center relative p-12 border border-brand-gold/10 bg-brand-navy-light/10"
+            className={`flex flex-col relative bg-surface-container w-full max-w-2xl ${i % 2 !== 0 ? 'self-end' : 'self-start'} shadow-ambient group hover:bg-surface-bright transition-colors duration-700 ease-out`}
           >
-            {/* Subtle background decoration */}
-            <div className="absolute inset-0 bg-pattern opacity-10 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-noise opacity-20 pointer-events-none"></div>
             
-            <MapPin className="w-6 h-6 text-brand-gold/50 mb-8" />
-            <h3 className="text-3xl md:text-4xl font-serif text-brand-gold mb-8">{event.title}</h3>
-            
-            <div className="space-y-6 w-full text-brand-cream/80 font-sans tracking-wide text-sm md:text-base mb-10 z-10">
-              <div>
-                <p className="font-medium text-brand-cream mb-1">{event.venueName}</p>
-                <p className="text-[12px] opacity-70 leading-relaxed max-w-xs mx-auto">{event.address}</p>
+            <div className="p-10 md:p-16 flex flex-col items-start text-left z-10 w-full">
+              <div className="flex items-center gap-4 mb-12">
+                <div className="w-10 h-[1px] bg-gradient-primary opacity-50"></div>
+                <p className="font-label tracking-[0.2em] text-[10px] text-primary uppercase">{event.title}</p>
               </div>
-            </div>
+              
+              <h3 className="text-3xl md:text-5xl font-display text-on-surface mb-8 tracking-tight">{event.venueName}</h3>
+              
+              <div className="space-y-6 w-full text-on-surface/70 font-body tracking-wide lg:text-lg mb-12">
+                <div className="flex items-center gap-3">
+                  <Calendar className="w-4 h-4 text-primary" />
+                  <p className="leading-relaxed">{event.date}</p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Clock className="w-4 h-4 text-primary" />
+                  <p className="leading-relaxed">{event.time}</p>
+                </div>
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-4 h-4 text-primary mt-1 shrink-0" />
+                  <p className="leading-relaxed max-w-md">{event.address}</p>
+                </div>
+              </div>
 
-            <a 
-              href={event.googleMapsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-auto z-10 px-6 py-3 border border-brand-gold/30 uppercase text-[10px] tracking-[0.2em] text-brand-gold hover:bg-brand-gold/5 transition-colors duration-300 w-full md:w-auto"
-            >
-              Open in Google Maps
-            </a>
+              <a 
+                href={event.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-auto px-6 py-4 outline outline-1 outline-outline-variant/40 uppercase font-label text-[10px] tracking-[0.2em] text-primary hover:bg-surface-bright hover:shadow-md transition-all duration-300 flex items-center gap-2"
+              >
+                <MapPin className="w-4 h-4" />
+                Buka Peta
+              </a>
+            </div>
           </motion.div>
         ))}
       </div>
     </section>
   );
 }
+

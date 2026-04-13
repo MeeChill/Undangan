@@ -5,56 +5,35 @@ import { weddingData } from "@/data/weddingData";
 
 export function Timeline() {
   return (
-    <section className="py-24 md:py-32 px-6 bg-brand-navy-light/5 flex flex-col items-center">
+    <section className="py-32 md:py-48 px-6 bg-surface-lowest flex flex-col items-center relative">
+      <div className="absolute inset-0 bg-noise opacity-30 pointer-events-none"></div>
+      
       <motion.p 
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="text-brand-gold font-sans tracking-[0.3em] text-[10px] uppercase mb-16 text-center"
+        className="text-primary font-label tracking-[0.3em] text-[10px] uppercase mb-24 text-center z-10"
       >
         The Schedule
       </motion.p>
 
-      <div className="relative max-w-lg w-full flex flex-col items-center">
-        {/* Vertical Line */}
-        <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-gradient-to-b from-brand-gold/0 via-brand-gold/30 to-brand-gold/0"></div>
-
+      <div className="w-full max-w-3xl flex flex-col z-10">
         {weddingData.timeline.map((step, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.8, delay: i * 0.2 }}
-            className={`w-full flex items-center justify-between mb-16 last:mb-0 ${
-              i % 2 === 0 ? "flex-row-reverse" : "flex-row"
-            }`}
+            transition={{ duration: 0.8, delay: i * 0.1 }}
+            className="w-full flex flex-col sm:flex-row items-start sm:items-center justify-between py-12 border-b border-outline-variant/30 last:border-0"
           >
-            <div className={`w-[45%] text-${i % 2 === 0 ? "left" : "right"}`}>
-              {i % 2 === 0 ? (
-                <div className="pl-6">
-                  <h4 className="text-sm md:text-base text-brand-cream tracking-wide">{step.title}</h4>
-                </div>
-              ) : (
-                <div className="pr-6">
-                  <span className="text-lg font-serif text-brand-gold tracking-wider">{step.time}</span>
-                </div>
-              )}
+            <div className="sm:w-1/3 mb-4 sm:mb-0">
+              <span className="text-2xl sm:text-3xl font-display tracking-wider text-primary">{step.time}</span>
             </div>
 
-            <div className="absolute left-1/2 -translate-x-1/2 w-[6px] h-[6px] rotate-45 bg-brand-gold"></div>
-
-            <div className={`w-[45%] text-${i % 2 !== 0 ? "left" : "right"}`}>
-              {i % 2 !== 0 ? (
-                <div className="pl-6">
-                  <h4 className="text-sm md:text-base text-brand-cream tracking-wide">{step.title}</h4>
-                </div>
-              ) : (
-                <div className="pr-6">
-                  <span className="text-lg font-serif text-brand-gold tracking-wider">{step.time}</span>
-                </div>
-              )}
+            <div className="sm:w-2/3">
+              <h4 className="text-xl md:text-2xl text-on-surface tracking-wide font-body font-light">{step.title}</h4>
             </div>
           </motion.div>
         ))}

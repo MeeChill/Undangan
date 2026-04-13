@@ -1,42 +1,60 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-navy: #0A1428;
-  --color-brand-navy-light: #12203A;
-  --color-brand-gold: #D4AF77;
-  --color-brand-gold-muted: #BFA06B;
-  --color-brand-cream: #FDFBF7;
-  --color-brand-cream-muted: #E5E1D5;
+  --color-surface-lowest: #0A0A0A;
+  --color-surface-container: #0F172A;
+  --color-surface-bright: #1E293B;
 
-  --font-sans: var(--font-inter);
-  --font-serif: var(--font-playfair);
+  --color-primary: #D4AF77;
+  --color-primary-container: #C9A66B;
+
+  --color-outline-variant: #334155;
+  
+  --color-on-primary: #0A0A0A;
+  --color-on-surface: #FDFBF7;
+
+  --font-display: var(--font-playfair);
+  --font-body: var(--font-inter);
+  --font-label: var(--font-inter);
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    background-color: var(--color-surface-lowest);
   }
   body {
-    @apply bg-brand-navy text-brand-cream font-sans antialiased selection:bg-brand-gold selection:text-brand-navy;
+    @apply bg-surface-lowest text-on-surface font-body antialiased;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-serif font-normal;
+  ::selection {
+    @apply bg-primary text-surface-lowest;
   }
 }
 
 @layer utilities {
-  .bg-pattern {
-    background-image: radial-gradient(var(--color-brand-navy-light) 1px, transparent 1px);
-    background-size: 24px 24px;
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.025'/%3E%3C/svg%3E");
+    background-repeat: repeat;
   }
-  .bg-gradient-gold {
-    background: linear-gradient(135deg, var(--color-brand-gold) 0%, var(--color-brand-gold-muted) 100%);
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-container) 100%);
   }
-  .text-gradient-gold {
-    background: linear-gradient(135deg, var(--color-brand-gold) 0%, var(--color-brand-gold-muted) 100%);
+  .text-gradient-primary {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-container) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+  .bronze-divider {
+    background: linear-gradient(90deg, transparent 0%, var(--color-primary-container) 50%, transparent 100%);
+    height: 1px;
+    width: 100%;
+  }
+  .shadow-ambient {
+    box-shadow: 0 20px 60px 10px rgba(40, 25, 0, 0.15);
+  }
+  .text-outline-gold {
+    -webkit-text-stroke: 1px var(--color-primary);
+    color: transparent;
   }
 }

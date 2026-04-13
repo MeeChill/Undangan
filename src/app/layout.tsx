@@ -15,8 +15,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Maulana & Indah - Wedding Invitation",
-  description: "Dengan penuh cinta dan bahagia, kami mengundang Anda untuk hadir di hari spesial kami.",
+  title: "Maulana & Indah - The Midnight Gallery",
+  description: "An elegant evening of celebration.",
 };
 
 export default function RootLayout({
@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" className={`${inter.variable} ${playfair.variable}`}>
-      <body className="antialiased">
+      <body className="antialiased bg-noise min-h-screen">
         {children}
       </body>
     </html>
